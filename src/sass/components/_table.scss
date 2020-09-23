@@ -1,0 +1,29 @@
+.table{
+    width: 100%; 
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0;
+
+    &__head{
+        border-radius: 5px;
+        & tr{
+            background:$color_primary_white;
+            font-weight: bolder; 
+        }
+    }
+    &__body{
+        background:$color_primary_white;
+        font-weight: 500;
+        & tr:nth-of-type(odd){
+            background-color: $color-primary-grey;
+        }
+
+    }
+    
+}
+td, th { 
+    padding: 6px;  
+    text-align: left; 
+  }
+
+

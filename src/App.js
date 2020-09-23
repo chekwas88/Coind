@@ -1,25 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, {Fragment} from 'react';
+import Table from './components/Table';
+import TableHeader from './components/TableHead';
+import TableBody from './components/TableBody';
+import TablePopOverMenu from './components/TableMenu';
+import Navbar from './components/Navbar';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {/* <TablePopOverMenu /> */}
+      <Table>
+        <TableHeader>
+          <th>Coin</th>
+          <th>Price</th>
+          <th>Volume</th>
+          <th>Supply</th>
+        </TableHeader>
+        <TableBody>
+          <tr>
+            <td>Bitcoin</td>
+            <td>100</td>
+            <td>10000</td>
+            <td>1230000000000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin</td>
+            <td>100</td>
+            <td>10000</td>
+            <td>1230000000000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin</td>
+            <td>100</td>
+            <td>10000</td>
+            <td>1230000000000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin</td>
+            <td>100</td>
+            <td>10000</td>
+            <td>1230000000000</td>
+          </tr>
+          <tr>
+            <td>Bitcoin</td>
+            <td>100</td>
+            <td>10000</td>
+            <td>1230000000000</td>
+          </tr>
+        </TableBody>
+      </Table>
     </div>
+    </Router>
   );
 }
 
