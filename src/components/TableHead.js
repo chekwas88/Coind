@@ -5,7 +5,7 @@ const TableHead = (props) => {
     return (
         <thead className={"table__header"}>
             
-            <tr className={"table__row"}>
+            <tr className={"table__header-row"}>
               {children}
             </tr>
           </thead>

@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: inherit;
 }
-$bp-largest: 75em;     // 1200px
+$bp-largest: 87.5em;     // 1400px
 $bp-large: 68.75em;    // 1100px
 $bp-medium: 56.25em;   // 900px
 $bp-small: 37.5em;     // 600px
@@ -19,5 +19,6 @@ html{
 body{
     box-sizing: border-box;
     font-family: 'Public Sans', sans-serif;
+    background-color: $color-primary-grey;
 }
 

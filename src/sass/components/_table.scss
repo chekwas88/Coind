@@ -3,27 +3,50 @@
     border-collapse: collapse;
     border-spacing: 0;
     padding: 0;
+    border-radius: 5px;
+    
 
-    &__head{
-        border-radius: 5px;
-        & tr{
-            background:$color_primary_white;
-            font-weight: bolder; 
+    &__header{
+        border-bottom: 1px solid $color-primary-grey;
+        &-row{
+            background:rgba($color_primary_grey, .3);
+            font-weight: bold;
+            font-size: $primary-font-size;
+            color: rgba(#000, .7);
+            
+            & > th{
+                padding: 1rem;
+                text-align: left;
+            }
         }
+
     }
     &__body{
         background:$color_primary_white;
         font-weight: 500;
-        & tr:nth-of-type(odd){
-            background-color: $color-primary-grey;
-        }
+        font-size: 14px;
+        & tr{
+            position: relative;
+            padding: 1rem;
+            border-bottom: 1px solid $color-primary-grey;
+            & td{
+                padding: 1.5rem;
+            }
 
+           
+        }
+        
     }
     
 }
-td, th { 
-    padding: 6px;  
-    text-align: left; 
-  }
+.coin-name{
+    padding: .5rem;
+}
+.coin-symbol{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: .5rem;
+}
+
 
 

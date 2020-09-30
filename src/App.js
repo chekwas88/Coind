@@ -1,62 +1,26 @@
 import React, {Fragment} from 'react';
-import Table from './components/Table';
-import TableHeader from './components/TableHead';
-import TableBody from './components/TableBody';
-import TablePopOverMenu from './components/TableMenu';
+import {ReactQueryCacheProvider, QueryCache} from 'react-query';
 import Navbar from './components/Navbar';
+import GlobalBar from './views/global';
+import Home from './views/home';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+
 function App() {
+  const queryCache = new QueryCache();
   return (
-    <Router>
-    <div className="App">
-      <Navbar />
-      {/* <TablePopOverMenu /> */}
-      <Table>
-        <TableHeader>
-          <th>Coin</th>
-          <th>Price</th>
-          <th>Volume</th>
-          <th>Supply</th>
-        </TableHeader>
-        <TableBody>
-          <tr>
-            <td>Bitcoin</td>
-            <td>100</td>
-            <td>10000</td>
-            <td>1230000000000</td>
-          </tr>
-          <tr>
-            <td>Bitcoin</td>
-            <td>100</td>
-            <td>10000</td>
-            <td>1230000000000</td>
-          </tr>
-          <tr>
-            <td>Bitcoin</td>
-            <td>100</td>
-            <td>10000</td>
-            <td>1230000000000</td>
-          </tr>
-          <tr>
-            <td>Bitcoin</td>
-            <td>100</td>
-            <td>10000</td>
-            <td>1230000000000</td>
-          </tr>
-          <tr>
-            <td>Bitcoin</td>
-            <td>100</td>
-            <td>10000</td>
-            <td>1230000000000</td>
-          </tr>
-        </TableBody>
-      </Table>
-    </div>
-    </Router>
+    <ReactQueryCacheProvider queryCache={queryCache} >
+      <Router>
+        <Navbar />
+        <GlobalBar />
+        <Switch>
+          <Route path="/" component={Home}/>
+        </Switch>
+      </Router>
+    </ReactQueryCacheProvider>
   );
 }
 

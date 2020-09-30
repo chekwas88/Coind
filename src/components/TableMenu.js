@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useRef, useCallback} from 'react';
+import React, {useEffect, useRef, useCallback, Fragment} from 'react';
 import Button from './Button';
 
 const TableMenu = ({setShowTableMenu, coin, history}) => {
@@ -28,30 +28,29 @@ const TableMenu = ({setShowTableMenu, coin, history}) => {
     }
     return (
         <div ref={ref} className={"table-popover"}>
-            <div>
+            
                 <Button
                         classname={"table-popover__button"}
                         onClick={() => handleNavigation("exchange")}
                     >
                         Exchange/Markets
                     </Button>
-            </div>
-            <div>
+            
+            
                 <Button 
                         classname={"table-popover__button"}
                         onClick={() => handleNavigation("chart")}
                 >
                     Charts
                 </Button>
-            </div>
-            <div>
+            
+           
                 <Button 
                     classname={"table-popover__button"}
                     onClick={() => handleNavigation("historical-data")}
                 >
                     Historical Data
                 </Button>
-            </div>
             
         </div>
     )
