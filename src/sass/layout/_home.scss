@@ -1,0 +1,114 @@
+.coin-container{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem;
+    @media only screen and (max-width: $bp-medium) {
+        margin: 5rem .5rem;
+     }
+
+    &__board{
+        width: 90%;
+        background-color: $color-primary-white;
+        min-height: 80vh;
+        box-shadow: 0 0 4px 0 rgba($color-primary-grey, .5);
+        font-size: $primary-font-size;
+        @media only screen and (max-width: $bp-medium) {
+            width: 100%;
+            overflow: scroll;
+        }
+    }
+    &__header {
+        margin: 4rem 0;
+        &> h1{
+            text-align: center;
+            font-size: $medium-font-size;
+            padding: 1rem;
+            color:  rgba(#000, .8);
+        }
+    }
+    
+    &__table{
+        
+        display: flex;
+
+    }
+    
+
+    &__wait{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-primary-white;
+        min-height: 80vh;
+        border: 1px solid rgba($color-primary-grey, .8);
+        box-shadow: 0 0 2px 0 rgba($color-primary-grey, .8);
+        font-size: $primary-font-size;
+
+    }
+    &__btn-refetch{
+        padding: 1rem;
+        border-radius: 5px;
+        color: $color-secondary-teal;
+        font-weight: bold;
+        border: 0;
+        box-shadow: 0 0 4px 1px rgba($color-primary-white,  1.0);
+    }
+    &__action{
+        margin: 1.5rem 0;
+        display: flex;
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        
+        &-bttn{
+            border: 0;
+            outline:none ;
+            box-shadow: 0 0 5px 1px rgba($color-primary-white,  1.0);
+            color: $color-secondary-teal;
+            font-weight: bold;
+            min-width: 10rem;
+            padding: 1rem .5rem;
+            text-align: center;
+            
+            cursor: pointer;
+        }
+        &-bttn-1{
+            margin-right: 5rem;
+        }
+        &-bttn:hover{
+            border: 1px solid $color_primary_teal;
+            box-shadow: 0 2px 5px 4px rgba($color_primary_grey,.2);
+        }
+        &-bttn:disabled{
+            color: $color-primary-grey-2;
+        }
+        &-bttn:disabled:hover{
+            border: 0;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+       
+    }
+    &__button{
+       
+        cursor: pointer;
+        border: 0;
+        padding:0
+        
+        
+    }
+
+    
+
+}
+
+.coin-container__menu{
+    position: absolute;
+    right: 8%;
+    @media only screen and (max-width: $bp-medium) {
+        right: 0;
+     }
+}
