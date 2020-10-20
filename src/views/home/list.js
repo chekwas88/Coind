@@ -1,74 +1,56 @@
-import React, {Fragment, useState, useCallback, useEffect} from 'react';
+import React from 'react';
 import {useHistory} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import { QueryCache, useQueryCache } from 'react-query';
 import Button from '../../components/Button';
 import Table from '../../components/Table';
 import TableHead from '../../components/TableHead';
-import useCoins, {getCoins} from '../../hooks/useCoins';
 import CoinRow from './coinRow';
 import {ChevronForward, ChevronBackward, MenuIcon} from '../../components/icons';
+import {useCoinsContext, CoinsProvider} from '../../contexts/coinsContext';
 
-const initialState = {
-    start: 0,
-    limit: 10,
-}
-const  Page = () => {
-    const [{start, limit}, setQueryParams] = useState(initialState);
-    const {latestData, resolvedData, refetch, isFetching,  isLoading, error} = useCoins(start, limit);
-    const history = useHistory();
-    const cache = new QueryCache();
-    const handleNextPagination = () => {
-        setQueryParams((prevState) => ({
-            ...prevState,
-            start: Math.max(prevState.limit + 1, (prevState.start  + prevState.limit)),
-        }))
-    }
-
-    useEffect(() => {
-        if(latestData?.data){
-            cache.prefetchQuery(['coins', start + limit, limit], getCoins)
-        }
-    })
-
-    const handlePreviousPagination = () => {
-        setQueryParams((prevState) => ({
-            ...prevState,
-            start: handlepreviousVal(prevState.start, prevState.limit),
-        }))
-    }
-   const  handlepreviousVal = (startVal, limitval) => {
-        const result = startVal - limitval;
-        return result <= 1 ? 0 : result;
-    }
-    if(isLoading){
-        return(
+const Loading = () => {
+    const {isLoading} = useCoinsContext();
+    return <>
+        {isLoading ? (
             <div className="coin-container">
-                <div className="coin-container__wait">
-                    <Loader
-                        type="ThreeDots"
-                        color="#00BCD4"
-                        height={35}
-                        width={30}
+            <div className="coin-container__wait">
+                <Loader
+                    type="ThreeDots"
+                    color="#00BCD4"
+                    height={35}
+                    width={30}
 
-                    />
-                </div>
+                />
             </div>
-        )
-    }
-    if(error){
-        return(
-            <Fragment>
-                <div className="coin-container">
-                    <div className="coin-container__wait">
-                        <Button classname={"coin-container__btn-refetch"} onClick={() => refetch & refetch()}>Please Try again</Button>
-                    </div>
-                </div>
-            </Fragment>
-        )
-    }
-    const {data, info} = resolvedData;
-    return (
+        </div>
+        ): null}
+    </>   
+}
+const ErrorView = () => {
+    const {error, refetch} = useCoinsContext();
+    console.log("error",error)
+   return <>
+        {error ? (
+        <div className="coin-container">
+            <div className="coin-container__wait">
+                <Button classname={"coin-container__btn-refetch"} onClick={() => refetch & refetch()}>Please Try again</Button>
+            </div>
+        </div>): null}
+    </>
+}
+const List = () => {
+    const history = useHistory();
+    const {
+        latestData,
+        resolvedData,
+        start,
+        handleNextPagination,
+        handlePreviousPagination
+    } = useCoinsContext(); 
+    
+    if(resolvedData){
+        const {data, info} = resolvedData;
+        return (
             <section className="coin-container">
                 <div className="coin-container__board">
                     <div className="coin-container__header">
@@ -89,27 +71,27 @@ const  Page = () => {
                                 
                             </TableHead>
                             <tbody className={"table__body"}>
-           
+        
         
                                 {data.map((obj) => (
                                     <CoinRow history={history} key={obj.id} coin={obj}/>
                                 ))}
-                           </tbody>
+                        </tbody>
                         </Table>
                     </div>
                     <div className="coin-container__action">
                         {start > 0 ?
-                             (<Button 
+                            (<Button 
                                 disabled={!latestData || !latestData.data}  
                                 onClick={handlePreviousPagination} 
                                 classname="coin-container__action-bttn coin-container__action-bttn-1 "
                                 >
                                     <span>
-                                     <ChevronBackward 
+                                    <ChevronBackward 
                                         size={10} 
                                         color={!latestData || !latestData.data ? "#9E9E9E" : "#00BCD4" }
-                                      />
-                                      Previous
+                                    />
+                                    Previous
                                     </span>
                             </Button>): null}
                         <Button 
@@ -128,7 +110,18 @@ const  Page = () => {
                     </div>
                 </div>
             </section>
-    )
+        )
+    }
+    return null;
+}
+const  Page = () => {
+    return (
+    <CoinsProvider>
+        <Loading />
+        <ErrorView />
+        <List />
+    </CoinsProvider>)
+    
 }
 
 export default Page

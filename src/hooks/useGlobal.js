@@ -7,6 +7,9 @@ const getGlobal = async () => {
 }
 
 const useGlobal = () => {
-    return useQuery('global', getGlobal);
+    return useQuery('global', getGlobal, {
+        retry: {failureCount: 2}
+        
+    });
 }
 export default useGlobal;
