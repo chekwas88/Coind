@@ -3,6 +3,7 @@ import {ReactQueryCacheProvider, QueryCache} from 'react-query';
 import Navbar from './components/Navbar';
 import GlobalBar from './views/global';
 import Home from './views/home';
+import Markets from './views/markets';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +18,8 @@ function App() {
         <Navbar />
         <GlobalBar />
         <Switch>
-          <Route path="/" component={Home}/>
+          <Route exact path="/" component={Home}/>
+          <Route path="/markets/:coin/:coinId" component={Markets}/>
         </Switch>
       </Router>
     </ReactQueryCacheProvider>

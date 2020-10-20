@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import {formatNumber} from '../../util';
-import TableMenu from '../../components/TableMenu';
-import { MenuIcon} from '../../components/icons';
+import {formatNumber} from '../util';
+import TableMenu from './TableMenu';
+import { MenuIcon} from './icons';
 
-const  CoinRow = ({coin}) => {
+const  Row = ({coin, history}) => {
     const [showMenu, setShowMenu] = useState(false);
     return (
         <tr>
@@ -18,9 +18,9 @@ const  CoinRow = ({coin}) => {
             <td>{coin.percent_change_24h}</td>
             <td>{coin.percent_change_1h}</td>
             <td ><span onClick={() => setShowMenu(!showMenu)}  className="coin-container__button"><MenuIcon color="#00BCD4" size={20}/></span></td>
-            {showMenu ? (<td id="tablemenu" className="coin-container__menu"><TableMenu setShowTableMenu={setShowMenu} obj={coin} /></td>):null}
+            {showMenu ? (<td id="tablemenu" className="coin-container__menu"><TableMenu setShowTableMenu={setShowMenu} history={history} coin={coin} /></td>):null}
         </tr>
     )
 }
 
-export default CoinRow
+export default Row
