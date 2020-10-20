@@ -39,7 +39,6 @@ const ErrorView = () => {
     </>
 }
 const List = () => {
-    const history = useHistory();
     const {
         latestData,
         resolvedData,
@@ -74,7 +73,7 @@ const List = () => {
         
         
                                 {data.map((obj) => (
-                                    <CoinRow history={history} key={obj.id} coin={obj}/>
+                                    <CoinRow  key={obj.id} coin={obj}/>
                                 ))}
                         </tbody>
                         </Table>
