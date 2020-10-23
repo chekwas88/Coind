@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useRef, useCallback, Fragment} from 'react';
+import React, {useEffect, useRef, useCallback} from 'react';
 import {useHistory} from 'react-router-dom';
 import Button from './Button';
 
 const TableMenu = ({setShowTableMenu, obj}) => {
     const history = useHistory();
-    console.log("kkk", obj);
     const ref = useRef();
     const polyHandleInfo = useCallback((e) => {
         if(e.target.id === "tablemenu"){

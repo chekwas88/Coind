@@ -1,7 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {formatNumber} from '../../util';
-import TableMenu from '../../components/TableMenu';
-import { MenuIcon} from '../../components/icons';
 
 const  MarketRow = ({market}) => {
     return (

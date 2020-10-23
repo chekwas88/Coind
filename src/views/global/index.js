@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import Loader from 'react-loader-spinner';
 import useGlobal from '../../hooks/useGlobal';
 import General from '../../components/General';

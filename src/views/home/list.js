@@ -1,5 +1,4 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Button from '../../components/Button';
 import Table from '../../components/Table';

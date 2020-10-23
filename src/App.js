@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {ReactQueryCacheProvider, QueryCache} from 'react-query';
 import Navbar from './components/Navbar';
 import GlobalBar from './views/global';

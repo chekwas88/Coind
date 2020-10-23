@@ -1,13 +1,10 @@
 import React from 'react';
 import {useMarkets} from '../hooks/useMarkets';
-import {useHistory} from 'react-router-dom';
 
 const MarketContext = React.createContext();
 MarketContext.displayName = 'MarketContext';
 
 export const MarketProvider = ({children, coinId, coin}) => {
-    // const history = useHistory()
-    console.log("props context")
     const {
         data,
         error,
